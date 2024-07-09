@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='style.css') }}">
+    <script src='main.js'></script>
+    <title>House Prediction</title>
+</head>
+<body>
+    <div class = 'wrap'>
+        <h1> House Price Prediction </h1>
+
+        <form action="{{url_for('predict')}}" method="POST">
+            <div class = 'contain'>
+                <label for="medinc"> Median Income of Group :</label>
+                <input type="text" id="medinc" name="medinc"><br><br>
+            </div>
+            
+            <div class = 'contain'>
+                <label for="houseage"> Age of House :</label>
+                <input type="text" id="houseage" name="houseage"><br><br>
+            </div>
+            
+            <div class = 'contain'>
+                <label for="avgrooms"> Average Rooms :</label>
+                <input type="text" id="avgrooms" name="avgrooms"><br><br>
+            </div>
+
+            <div class = 'contain'>
+                <label for="avgbdrms"> Average Bedrooms :</label>
+                <input type="text" id="avgbdrms" name="avgbdrms"><br><br>
+            </div>
+            
+            <div class = 'contain'>
+                <label for="pop"> Population size :</label>
+                <input type="text" id="pop" name="pop"><br><br>
+            </div>
+
+            <div class = 'contain'>
+                <label for="avgoccp"> Average Members of Household : </label>
+                <input type="text" id="avgoccp" name="avgoccp"><br><br>
+            </div>
+
+            <div class = 'contain'>
+                <label for="lat"> Latitude :</label>
+                <input type="text" id="lat" name="lat"><br><br>
+            </div>    
+
+            <div class = 'contain'>
+                <label for="long"> Longitude : </label>
+                <input type="text" id="long" name="long"><br><br>
+            </div>
+            
+            <div class="contain-button">
+                <button type="submit">Predict</button>
+            </div>
+
+        </form>
+
+        <div id="result">
+            <p> House Price is: ${{data}}</p>
+        </div>
+
+    </div>
+    
+</body>
+</html>
