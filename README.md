@@ -50,7 +50,11 @@ It can be downloaded/loaded using the
 
 
 ## Building Model
-The model used on this dataset was the RandomForestRegressor. The following are the metrics : 
+The model used on this dataset was the RandomForestRegressor. The following are the metrics along with the best model found using GridSearchCV: 
+RandomForestRegressor(max_depth=20, max_features='sqrt', n_estimators=200)
+R square :  0.8138637284893164
+Mean squared error :  0.2439146413638855
+Mean absolute error :  0.32823864287321625
 
 ## Create Flask API
 
