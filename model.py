@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import seaborn as sns
-import pickle
+import joblib
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split , GridSearchCV
@@ -64,7 +64,7 @@ model = RandomForestRegressor()
 
 param_grid = {
     'n_estimators': [50, 100, 200],   
-    'max_depth': [None, 10, 20],      
+    'max_depth': [None, 5, 10],      
     'min_samples_split': [2, 5, 10],  
     'min_samples_leaf': [1, 2, 4],    
     'max_features': ['auto', 'sqrt']  
@@ -78,7 +78,7 @@ gscv.fit(X_train , y_train)
 print(gscv.best_estimator_)
 
 #best estimator was 
-#RandomForestRegressor(max_features='sqrt', max_depth = 20,n_estimators=200)
+#RandomForestRegressor(max_features='sqrt',n_estimators=200)
 bestmodel = gscv.best_estimator_
 
 bestmodel.fit(X_train , y_train)
@@ -92,4 +92,4 @@ print('Mean squared error : ' , mean_squared_error(y_test , y_pred))
 print('Mean absolute error : ' , mean_absolute_error(y_test , y_pred))
 
 
-pickle.dump(bestmodel, open('model.pkl', 'wb'))
+joblib.dump(bestmodel , 'model.pkl' , compress = 3)
