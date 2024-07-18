@@ -1,8 +1,9 @@
-certifi==2023.7.22
-Flask==2.1.2
-gunicorn==20.1.0
-matplotlib==3.8.0
-numpy==1.25.2
+certifi==2024.7.4
+Flask==3.0.3
+feature-engine==1.8.0
+gunicorn==22.0.0
+matplotlib==3.9.1
+numpy==1.26.4
 pandas==2.2.2
-scikit-learn==1.5.0
+scikit-learn==1.5.1
 seaborn==0.13.2
