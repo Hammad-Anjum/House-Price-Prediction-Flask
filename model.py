@@ -4,7 +4,7 @@ import seaborn as sns
 import joblib
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
-from sklearn.model_selection import train_test_split , GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error , r2_score , mean_absolute_error
 from feature_engine.outliers import Winsorizer
@@ -62,28 +62,9 @@ X_train , X_test , y_train , y_test = train_test_split(X , y , shuffle=True , ra
 
 model = RandomForestRegressor()
 
-param_grid = {
-    'n_estimators': [50, 100, 200],   
-    'max_depth': [None, 5, 10],      
-    'min_samples_split': [2, 5, 10],  
-    'min_samples_leaf': [1, 2, 4],    
-    'max_features': ['auto', 'sqrt']  
-}
+model.fit(X_train , y_train)
 
-
-gscv = GridSearchCV(model , param_grid , cv = 3 , verbose=2)
-
-gscv.fit(X_train , y_train)
-
-print(gscv.best_estimator_)
-
-#best estimator was 
-#RandomForestRegressor(max_features='sqrt',n_estimators=200)
-bestmodel = gscv.best_estimator_
-
-bestmodel.fit(X_train , y_train)
-
-y_pred = bestmodel.predict(X_test)
+y_pred = model.predict(X_test)
 
 print("R square : " , r2_score(y_test , y_pred))
 
@@ -92,4 +73,4 @@ print('Mean squared error : ' , mean_squared_error(y_test , y_pred))
 print('Mean absolute error : ' , mean_absolute_error(y_test , y_pred))
 
 
-joblib.dump(bestmodel , 'model.pkl' , compress = 3)
+joblib.dump(model , 'model.pkl' , compress = 3)
